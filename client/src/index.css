@@ -1,0 +1,131 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  --background: 0 0% 100%;
+  --foreground: 20 14.3% 4.1%;
+  --muted: 60 4.8% 95.9%;
+  --muted-foreground: 25 5.3% 44.7%;
+  --popover: 0 0% 100%;
+  --popover-foreground: 20 14.3% 4.1%;
+  --card: 0 0% 100%;
+  --card-foreground: 20 14.3% 4.1%;
+  --border: 20 5.9% 90%;
+  --input: 20 5.9% 90%;
+  --primary: 205 65% 28%; /* Deep ocean blue */
+  --primary-foreground: 211 100% 99%;
+  --secondary: 173 55% 42%; /* Natural teal */
+  --secondary-foreground: 24 9.8% 10%;
+  --accent: 15 73% 58%; /* Warm rust */
+  --accent-foreground: 60 9.1% 97.8%;
+  --destructive: 0 84.2% 60.2%;
+  --destructive-foreground: 60 9.1% 97.8%;
+  --ring: 20 14.3% 4.1%;
+  --radius: 0.5rem;
+  --chart-1: 173 55% 42%;
+  --chart-2: 205 65% 28%;
+  --chart-3: 15 73% 58%;
+  --chart-4: 156 70% 40%;
+  --chart-5: 20 80% 67%;
+}
+
+.dark {
+  --background: 240 10% 3.9%;
+  --foreground: 0 0% 98%;
+  --muted: 240 3.7% 15.9%;
+  --muted-foreground: 240 5% 64.9%;
+  --popover: 240 10% 3.9%;
+  --popover-foreground: 0 0% 98%;
+  --card: 240 10% 3.9%;
+  --card-foreground: 0 0% 98%;
+  --border: 240 3.7% 15.9%;
+  --input: 240 3.7% 15.9%;
+  --primary: 205 65% 28%;
+  --primary-foreground: 211 100% 99%;
+  --secondary: 173 55% 42%;
+  --secondary-foreground: 0 0% 98%;
+  --accent: 15 73% 58%;
+  --accent-foreground: 0 0% 98%;
+  --destructive: 0 62.8% 30.6%;
+  --destructive-foreground: 0 0% 98%;
+  --ring: 240 4.9% 83.9%;
+  --radius: 0.5rem;
+}
+
+@layer base {
+  * {
+    @apply border-border;
+  }
+
+  body {
+    @apply font-sans antialiased bg-background text-foreground scroll-smooth;
+  }
+}
+
+/* Custom styles */
+.font-heading {
+  font-family: 'Montserrat', sans-serif;
+  letter-spacing: -0.015em;
+}
+
+.font-sans {
+  font-family: 'Open Sans', sans-serif;
+}
+
+/* Transitions */
+.slide-transition {
+  transition: transform 0.5s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.hover-scale {
+  transition: transform 0.3s cubic-bezier(0.25, 0.1, 0.25, 1);
+}
+
+.hover-scale:hover {
+  transform: translateY(-0.5rem);
+}
+
+.section-divider {
+  height: 6rem;
+  border-top-left-radius: 50px;
+  border-top-right-radius: 50px;
+}
+
+/* Background patterns */
+.bg-pattern-dots {
+  background-image: radial-gradient(currentColor 1px, transparent 1px);
+  background-size: 10px 10px;
+}
+
+/* Animated elements */
+@keyframes float {
+  0%, 100% { transform: translateY(0); }
+  50% { transform: translateY(-10px); }
+}
+
+.float-animation {
+  animation: float 5s ease-in-out infinite;
+}
+
+@keyframes glow {
+  0%, 100% { filter: drop-shadow(0 0 2px rgba(var(--secondary), 0.3)); }
+  50% { filter: drop-shadow(0 0 8px rgba(var(--secondary), 0.5)); }
+}
+
+.glow-animation {
+  animation: glow 8s linear infinite;
+}
+
+/* Custom components */
+.fish-pattern::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background-image: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23000000' fill-opacity='0.05'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+  z-index: -1;
+  opacity: 0.08;
+}
